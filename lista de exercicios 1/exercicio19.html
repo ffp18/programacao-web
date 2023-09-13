@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+    <h1>exercicio 19</h1>
+
+    <label for="number">Número da conta</label>
+    <input type="text" id="conta">
+    
+    <label for="number">Saldo</label>
+    <input type="number" id="saldo">
+    
+    <label for="number">Débito</label>
+    <input type="number" id="debito">
+    
+    <label for="number">Crédito</label>
+    <input type="number" id="credito">
+    
+    <button id="botao">Calcular saldo</button>
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById("botao").addEventListener("click", calcular);
+
+        function calcular(){
+            let conta = document.getElementById("conta").value;
+            let saldo = document.getElementById("saldo").value;
+            let debito = document.getElementById("debito").value;
+            let credito = document.getElementById("credito").value;
+
+            saldo = saldo - debito + credito *1;
+
+            if (saldo >= 0){
+                document.getElementById("resultado").textContent = "Seu saldo é positivo R$" + saldo;
+            } else{
+                document.getElementById("resultado").textContent = "Seu saldo é negativo R$" + saldo;
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+
+    <h1>exercicio 17</h1>
+    
+    <label for="number">Salario por hora</label>
+    <input type="number" id="salario">
+    <br>
+    <label for="number">Horas trabalhadas</label>
+    <input type="number" id="horas">
+    <br>
+    <button id="botao">Resultado</button>
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById("botao").addEventListener("click", calcular);
+        function calcular() {
+            let salario = document.getElementById("salario").value;
+            let horas = document.getElementById("horas").value;
+            let salarioTotal = horas * salario;
+
+            if (horas > 40) {
+                let horasExtras = horas - 40;
+                let salarioExtra = horasExtras * (salario * 1.5);
+                salarioTotal += salarioExtra;
+            }
+
+            document.getElementById("resultado").textContent = `Salário total: R$ ${ salarioTotal }`;
+        }
+
+    </script>
+
+   
+
+
+</body>
+</html>

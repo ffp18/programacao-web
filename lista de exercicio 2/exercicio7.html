@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+    
+    <h1>exercicio 7</h1>
+    
+    <p>Números entre 1 e 100 que são múltiplos de 3 ou 5.</p>
+
+    <select id="seleciona">
+        <option value="3">3</option>
+        <option value="5">5</option>
+    </select>
+    <button id="botao">Resultado</button>
+    <p id="resultado"></p>
+
+    <script>
+        document.querySelector("#botao").addEventListener("click",calcular);
+        
+        function calcular() {
+
+            let seleciona = document.querySelector("#seleciona").value;
+
+            let guarda = " ";
+
+            if (seleciona === "3") {
+                for (let i = 0; i <= 100; i += 3) {
+                    guarda += i + " ";
+                }
+            } else {
+                for (let j = 0; j <= 100; j += 5) {
+                    guarda += j + " ";
+                }
+            }
+            document.querySelector("#resultado").textContent = guarda;
+
+        }
+        
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--e) Faça uma função em Javascript que receba como argumento um array e devolva um array com 
+os elementos pela ordem inversa sem utilizar a função reverse()-->
+
+<label for="number">digite um numero:</label>
+<input type="number" id="numero">
+<button id="botao">resultado</button>
+<p id="resultado"></p>
+
+<script>
+    function invertArray(length) {
+        const array = [];
+        for(let i=0; i < length; i++) {
+            array.push(Math.floor(Math.random()*100)+1);
+        }
+return array;
+    }
+
+    document.querySelector("#botao").addEventListener("click", calcular);
+
+    function calcular() {
+        const numero = parseInt(document.querySelector("#numero").value);
+        const array = invertArray(numero);
+        const array2 = [];
+
+        for(let i = array.length - 1; i >=0; i--) {
+            array2.push(array[i]);
+        }
+        document.querySelector("#resultado").innerHTML = `Array: <br> ${array.join(",")} <br><br>
+        Array invertido: <br> ${array2.join(",")}`;
+    }
+</script>
+</body>
+</html>

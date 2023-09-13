@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+    <!-- Faça uma função Javascript que receba como argumento um número que corresponde a um
+ângulo e devolva o seno desse ângulo.
+-->
+    <h1>Exercícios (A) de Funções Matemáticas – Objeto Math</h1>
+
+    <label for="number">digite um angulo:</label>
+    <input type="text" id="angulo">
+    <button id="botao">resultado</button>
+    <p id="resultado"></p>
+
+    <script>
+        document.querySelector("#botao").addEventListener("click", calcular);
+
+        function calcular() {
+            var anguloEmGraus = Number(document.querySelector("#angulo").value);
+            var anguloEmRadianos = anguloEmGraus * (Math.PI / 180);
+            var seno = Math.sin(anguloEmRadianos);
+            document.querySelector("#resultado").textContent = "O seno de " + anguloEmGraus + " graus é " + seno;
+        }
+    </script>
+</body>
+</html>

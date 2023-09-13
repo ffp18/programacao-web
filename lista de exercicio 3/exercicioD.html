@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+
+</head>
+<body>
+    <!--Faça uma função que receba uma string e retorne 
+        TRUE caso a string informada tenha pelo
+menos 6 caracteres, pelo menos um caracter numérico
+ e que tenha mais que 3 caracteres distintos, 
+ou FALSE, caso contrário (nossa primeira tentativa
+ de identificar um bom login). -->
+    <h1>exercicio D objeto string</h1>
+
+    <label for="text"> Crie uma senha com pelo menos 6 caracteres:</label>
+    <input type="text" id="senha">
+    <button id="botao">login</button>
+
+    <p id="temNumero">Deve conter pelo menos um caracter numérico.</p>
+    <p id="caracteresDistintos">Deve conter mais que 3 caracteres distintos.</p>
+    <p id="resultado"></p>
+
+    <script>
+        document.querySelector("#botao").addEventListener("click", calcular);
+
+        function calcular() {
+            let texto = document.querySelector("#senha").value;
+            let temNumero = /\d/.test(texto); //O comando /\d/.test(texto) é usado para verificar se a string texto contém pelo menos um dígito numérico
+            let caracteresDistintos = new Set(texto).size; //O comando new Set(texto).size é usado para contar o número de caracteres distintos na string texto
+           
+            if (texto.length >= 6 && temNumero && caracteresDistintos >3 ) {
+                    document.querySelector("#resultado").textContent = "true";
+            } else {
+                document.querySelector("#resultado").textContent = "false";
+            }
+
+        }
+    </script>
+
+
+
+</body>
+</html>

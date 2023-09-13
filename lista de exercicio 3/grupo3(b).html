@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Faça uma função Javascript que receba um número positivo ou negativo como argumento e 
+retorne o valor absoluto desse número.-->
+
+    <h1>Exercícios (B) de Funções Matemáticas – Objeto Math</h1>
+
+    <label for="number">digite um numero:</label>
+    <input type="text" id="numero">
+    <button id="botao">resultado</button>
+    <p id="resultado"></p>
+
+    <script>
+        document.querySelector("#botao").addEventListener("click",calcular);
+        function calcular() {
+            let num = Number(document.querySelector("#numero").value);
+            let valorAbsoluto = Math.abs(num);
+            document.querySelector("#resultado").textContent = "O valor absoluto de " + num + " é " + valorAbsoluto;
+        }
+        
+    </script>
+
+</body>
+</html>

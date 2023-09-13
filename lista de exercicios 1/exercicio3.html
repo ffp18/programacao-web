@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+    
+</head>
+<body>
+    
+     <h1> exercicio 3</h1>
+
+    <label for="anos">Anos</label>
+    <input type="number" id="anos">
+    <label for="meses">Meses</label>
+    <input type="number" id="meses">
+    <label for="dias">Dias</label>
+    <input type="number" id="dias">
+
+    <button id="botao">Idade em anos</button>
+
+    <p id="resultado"></p>
+
+    <script>
+    
+        var ano = 0;
+        var mes = 0;
+        var dia = 0;
+        var resultado = 0;
+
+        document.getElementById("botao").addEventListener("click", calculo);
+
+        function calculo() {
+            ano = document.getElementById("anos").value;
+            mes = document.getElementById("meses").value;
+            dia = document.getElementById("dias").value;
+
+            resultado = ano * 365;
+            resultado = (mes * 30) + resultado;
+            resultado = dia * 1 + resultado;
+
+            document.getElementById("resultado").textContent = resultado;
+        }
+        
+    </script>
+
+</body>
+</html>

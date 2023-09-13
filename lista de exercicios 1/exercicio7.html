@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+    <h1>exercicio 7</h1>
+
+    <label for="salario"> Salário</label>
+    <input type="number" id="salario">
+    <br>
+    <br>
+    <label for="comissao"> Valor recebido por carro</label>
+    <input type="number" id="comissao">
+    <br>
+    <br>
+
+    <label for="carrosV">Carros Vendidos</label>
+    <input type="number" id="carrosV">
+    <br>
+    <br>
+
+    <label for="totalV"> Valor total de suas vendas </label>
+    <input type="number" id="totalV">
+    <br>
+    <br>
+
+    <button id="botao"> calcular salário </button>
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById("botao").addEventListener("click", calcular);
+        function calcular() {
+            let salario = document.getElementById("salario").value;
+            let comissao = document.getElementById("comissao").value;
+            let carrosV = document.getElementById("carrosV").value;
+            let totalV = document.getElementById("totalV").value;
+
+            salario = (carrosV * comissao) + (totalV * 0.05) + (salario) * 1;
+
+            document.getElementById("resultado").textContent = salario;
+
+        }
+
+    </script>
+</body>
+</html>

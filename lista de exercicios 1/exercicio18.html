@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+    <h1>exercicio 18</h1>
+    
+    <label for="salario">Salário fixo</label>
+    <input type="number" id="salario">
+    <label for="vendas">Valor das vendas</label>
+    <input type="number" id="vendas">
+    <button id="botao">resultado</button>
+    <p id="resultado"></p>
+
+    <script>
+        
+        document.getElementById("botao").addEventListener("click", calculo);
+
+        function calculo() {
+            var salario = document.getElementById("salario").value;
+            var vendas = document.getElementById("vendas").value;
+
+            var comissao = 0;
+
+            if (vendas <= 1500) {
+                comissao = vendas * 0.03;
+            } else {
+                comissao = (1500 * 0.03) + (vendas * 0.05);
+            }
+
+            salario = parseFloat(salario) + parseFloat(comissao);
+
+            document.getElementById("resultado").textContent = `Salário total: R$ ${salario}`;
+        }
+    </script>
+
+</body>
+</html>

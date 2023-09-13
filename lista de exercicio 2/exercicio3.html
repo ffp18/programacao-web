@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+
+<body>
+    <h1>exercicio 3</h1>
+
+    <label for="number">Digite um numero:</label>
+    <input type="number" id="number">
+
+    <select id="option">
+        <option value="pares">Par</option>
+        <option value="impares">Impar</option>
+    </select>
+    <button id="botao">calcular</button>
+    <p id="resultado"></p>
+
+    <script>
+        document.querySelector("#botao").addEventListener("click", calcular);
+
+        function calcular() {
+            let numero = Number(document.getElementById("number").value);
+            let opcao = document.getElementById("option").value;
+            let resultado = " ";
+
+            if (opcao === "pares") {
+                for (let i = 0; i <= numero; i += 2) {
+                    resultado += i + " ";
+                }
+
+            } else {
+                for (let j = 0; j <= numero; j++) {
+                    if ((j % 2) !== 0) {
+
+                        resultado += j + " ";
+                    }
+                }
+            }
+
+            document.querySelector("#resultado").textContent = resultado;
+        }
+    </script>
+</body>
+
+</html>

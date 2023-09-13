@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+    <h1>exercicio 1</h1>
+
+    <label for="valor">valor</label>
+    <input type="number" id="valor">
+    <button id="botao">valor antecessor</button>
+    <p id="resultado"></p>
+     
+    <script>
+        
+    let clicou = document.querySelector("#botao");
+
+    let resultado = document.querySelector("#resultado");
+
+
+clicou.addEventListener("click", Resultado);
+
+function Resultado() {
+    let valor = document.querySelector("#valor").value;
+    resultado.textContent = --valor;
+
+}
+</script>
+
+</body>
+</html>

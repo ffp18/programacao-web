@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+    <!-- Faça uma função Javascript que receba um número real como argumento e retorne um valor com 
+     arredondamento às centésimas (2 dígitos) -->
+
+    <h1>Exercícios (C) de Funções Matemáticas – Objeto Math</h1>
+
+    <label for="number">digite um numero:</label>
+    <input type="text" id="numero">
+    <button id="botao">resultado</button>
+    <p id="resultado"></p>
+
+    <script>
+        document.querySelector("#botao").addEventListener("click", calcular);
+
+        function calcular() {
+            var num = Number(document.querySelector("#numero").value);
+            var resultado = Number(num.toFixed(2));
+            document.querySelector("#resultado").textContent = "O valor de " + num + " arredondado às centésimas é " + resultado;
+        }
+    </script>
+</script>
+</body>
+</html>

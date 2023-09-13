@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Faça uma função Javascript que receba como argumento o dia,
+         mês e ano e devolva um objeto
+           data correspondente. -->
+    <h1> Exercícios com Datas – Objeto Date</h1>
+    <h2>questão A</h2>
+
+     <label for="text">Dia:</label>
+     <input type="text" id="dia">
+     <label for="text">Mês</label>
+     <input type="text" id="mes">
+     <label for="text">Ano</label>
+     <input type="text" id="ano">
+
+     <button id="botao">Criar data</button>
+     <p id="resultado"></p>
+
+     <script>
+        document.querySelector("#botao").addEventListener("click",calcular);
+        function calcular() {
+            let dia = document.querySelector("#dia").value;
+            let mes = document.querySelector("#mes").value;
+            let ano = document.querySelector("#ano").value;
+
+            let data = new Date(ano, mes -1 ,dia);
+            document.querySelector("#resultado").textContent = data.toLocaleDateString();
+        }
+     </script>
+    
+</body>
+</html>

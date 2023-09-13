@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+   <!-- Use a estrutura de repetição WHILE para mostrar uma contagem de números pares 
+na tela. Essa contagem deve iniciar em 0 e terminar com um número previamente 
+informado pelo teclado. -->
+
+    <h1>exercicio 1</h1>
+    <label for="number">Pares</label>
+<input type="number" id="numerospares">
+<button id="botao">resultado</button>
+<p id="resultado"></p>
+
+<script>
+    document.getElementById("botao").addEventListener("click", calcular);
+
+    function calcular() {
+        let numerospares = parseInt(document.getElementById("numerospares").value);
+        let resultado = " ";
+        let i = 0;
+        while (i <= numerospares) {
+          resultado += i + " ";
+          i += 2;
+        }
+
+        document.getElementById("resultado").textContent = resultado;
+    }
+</script>
+</body>
+</html>

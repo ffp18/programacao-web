@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+ 
+    <!--b)Faça uma função Javascript que receba uma string com 
+        um nome completo e devolva uma string 
+          com o primeiro e último nome -->
+    <h1>exercicio B objeto string</h1>
+
+    <label for="text">Digite seu nome completo:</label>
+    <input type="text" id="nomecompleto">
+    <button id="botao">Enter</button>
+    <p id="resultado"></p>
+
+    <script>
+        document.querySelector("#botao").addEventListener("click",calcular);
+         
+        function calcular() { 
+
+            let nomecompleto = document.querySelector("#nomecompleto").value;
+            let nomes = nomecompleto.split(' ');
+            let primeiroNome = nomes[0];
+            let ultimoNome = nomes[nomes.length - 1];
+            let resultado = primeiroNome + ' ' + ultimoNome;
+    document.querySelector("#resultado").textContent = resultado;
+}
+           
+
+          
+        
+    </script>
+
+</body>
+</html>

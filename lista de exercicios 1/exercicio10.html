@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+    <h1>exercicio 10</h1>
+
+    <label for="numero"> Digite um número </label>
+    <input type="number" id="numero">
+    <button id="botao">Valor</button>
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById("botao").addEventListener("click", calcular);
+
+        function calcular() {
+            let numero = document.getElementById("numero").value;
+            if (numero > 10) {
+                document.getElementById("resultado").textContent = "O número indicado é maior que 10";
+            } else {
+                document.getElementById("resultado").textContent = "O número indicado é menor que 10";
+            }
+        }
+    </script>
+</body>
+</html>

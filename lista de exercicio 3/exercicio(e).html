@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ) Faça uma função Javascript que receba uma data 
+        como argumento e devolva o ano-->
+
+        <h1>exercicio E Exercícios com Datas – Objeto Date</h1>
+
+    <label for="date-input">Data:</label>
+    <input type="date" id="date-input">
+    <button id="botao">resultado</button>
+    <p id="resultado"></p>
+
+    <script>
+         document.querySelector("#botao").addEventListener("click", calcular);
+    function calcular() {
+        
+        let a = document.querySelector("#date-input").value;
+        let date = new Date(a);
+        let resultado = date.getFullYear();
+
+        document.querySelector("#resultado").textContent = "Ano:" + resultado;
+    }
+      </script>
+</body>
+</html>

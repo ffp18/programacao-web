@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+    <!-- Faça uma função Javascript que receba uma data como 
+        argumento e devolva quantos dias faltam 
+        para chegar nessa data.-->
+
+     <h1>exercicio F Exercícios com Datas – Objeto Date</h1>
+      
+    <label for="date-input">Data:</label>
+    <input type="date" id="date-input">
+    <button id="botao">resultado</button>
+    <p id="resultado"></p>
+
+    <script>
+         document.querySelector("#botao").addEventListener("click", calcular);
+         
+    function calcular() {
+        
+        let a = document.querySelector("#date-input").value;
+        let date = new Date(a);
+        let today = new Date();
+        let time = date.getTime() - today.getTime();
+        let days = Math.ceil(time/(1000*3600*24));
+
+        document.querySelector("#resultado").textContent = "falta:" + days + "para chegar nessa data!";
+    }
+      </script>
+</body>
+</html>

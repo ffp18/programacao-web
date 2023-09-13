@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+      <h1>exercicio 5</h1>
+
+    <label for="salario"> Salário</label>
+    <input type="number" id="salario">
+    <label for="valor"> Reajuste</label>
+    <input type="number" id="valor">
+    <button id="botao">reajuste</button>
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById("botao").addEventListener("click", calcular);
+        
+        function calcular() {
+            let salario = document.getElementById("salario").value;
+            let valor = document.getElementById("valor").value;
+            salario = (salario * (valor / 100)) + salario * 1;
+
+            document.getElementById("resultado").textContent = salario;
+        }
+
+    </script>
+</body>
+</html>

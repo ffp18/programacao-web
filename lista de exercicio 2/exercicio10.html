@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+    <style>
+        table, td, th {
+            border: 1px solid;
+        }
+
+        table {
+            margin: 50px auto;
+            width: 50%;
+            border-collapse: collapse;
+        }
+        #resultado tbody {
+            background-color: rgb(223, 216, 216);
+        }
+
+        .center-50 {
+            margin: 0px auto;
+            width: 50%;
+        }
+    </style>
+
+
+</head>
+<body>
+
+    <!--10. Fazer um algoritmo para ler os dados (matrícula, idade, sexo, altura e concursado 
+        [S/N]) de vários funcionários de uma empresa. O último tem a 
+        matrícula igual a zero e não entra nos cálculos. Calcular e mostrar: 
+
+        
+        a) o número de funcionárias concursadas; 
+        b) o número de funcionários (somente homens); 
+        c) a maior idade dos homens concursados; 
+        d) a quantidade de mulheres com mais de 30 anos sem concurso;
+        e) a quantidade de concursados (as); 
+        f) a média das alturas dos homens com menos de 40 anos.
+        -->
+    <p>
+        <label for="idade">Idade</label>
+        <input type="number" id="idade">
+    </p>
+    <p>
+        <label for="sexo">Sexo</label>
+        <select id="sexo">
+            <option value="M">Masculino</option>
+            <option value="F">Feminino</option>
+        </select>
+    </p>
+    <p>
+        <label for="altura">Altura</label>
+        <input type="number" id="altura" step="0.1">
+    </p>
+     <fieldset>
+        <legend>Concursado</legend>
+        <input type="radio" checked name="concursado" value="s" id="concursado-sim">
+        <label for="concursado-sim">Sim</label>
+        <input type="radio" name="concursado" value="n" id="concursado-nao">
+        <label for="concursado-nao">Não</label>
+     </fieldset>
+
+   <p>
+    <button id="adicionar">Adicionar funcionário</button>
+   </p>
+
+   <table id="resultado">
+<thead>
+   <tr>
+    <th>Idade</th>
+    <th>Sexo</th>
+    <th>Altura</th>
+    <th>Concursado</th>
+   </tr>
+</thead>
+   </table> 
+
+   <table id="estatistica">
+    <tbody>
+
+        <tr>
+            <th>número de funcionárias concursadas</th>
+            <td>0</td>
+        </tr>
+
+        <tr>
+            <th>numéros de funcionários (somente homens)</th>
+            <td>2</td>
+        </tr>
+
+        <tr>
+            <th>maior idade dos homens concursados</th>
+            <td>2</td>
+        </tr>
+          
+        <tr>
+        <th>quantidade de mulheres com mais de 30 anos sem concurso</th>
+        <td>0</td>
+    </tr>
+
+          <tr>
+            <th>média das alturas dos homens com menos de 40 anos</th>
+            <td>1.6</td>
+          </tr>
+
+    </tbody>
+
+   </table>
+
+   <script>
+    let funcionariasConcursadas = 0;
+    let totalFuncionarios = 0;
+    let maiorIdade = null;
+    let totalMulheresComMaisDeTrintaSemConcurso = 0;
+    
+    let somaAlturasDosHomensComMenosDeQuarenta = 0;
+    let totalAlturasDosHomensComMenosDeQuarenta = 0;
+
+    document.querySelector("#adicionar").addEventListener("click", adicionar);
+
+    function adicionar() {
+        let idade = parseInt(document.querySelector("#idade").value);
+        let sexo = document.querySelector("#sexo").value;
+        let altura = parseFloat(document.querySelector("#altura").value);
+        let concursado = document.querySelector("input[name = 'concursado']:checked").value;
+        let corpo = document.querySelector('#resultado tbody');
+
+        corpo.innerHTML += `
+        <tr>
+            <td>${idade}</td>
+            <td>${sexo == 'f' ? 'Feminino':'Masculino'}</td>
+            <td>${altura}</td>
+            <td>${concursado == 's' ? 'Sim':'não'}</td>
+        </tr>`;
+
+        if(sexo == 'f' && concursado == 's') {
+            funcionariasConcursadas++;
+        }
+
+        if(sexo == 'm') {
+            totalFuncionarios++;
+        }
+        if(sexo == 'm' && concursado == 's') {
+            if(maiorIdade == null || idade > maiorIdade) {
+                maiorIdade = idade;
+            }
+        }
+        if(sexo == 'f' && idade > 30 && concursado == 'n') {
+            totalMulheresComMaisDeTrintaSemConcurso++ ;
+        }
+
+        if(sexo == 'm' && idade < 40) {
+            totalAlturasDosHomensComMenosDeQuarenta++;
+            somaAlturasDosHomensComMenosDeQuarenta += altura;
+        }
+
+        media = totalAlturasDosHomensComMenosDeQuarenta > 0 ?
+        somaAlturasDosHomensComMenosDeQuarenta/totalAlturasDosHomensComMenosDeQuarenta: 0;
+
+        let estatistica = document.querySelector("#estatistica");
+
+        estatistica.innerHTML = `
+        <tr>
+            <th>número de funcionárias concursadas</th>
+            <td>${funcionariasConcursadas} </td>
+            </tr>
+
+            <tr>
+                <th>número de funcionários (somente homens)</th>
+                <td>${totalFuncionarios}</td>
+                </tr>
+
+                <tr>
+                    <th>maior idade dos homens concursados</th>
+                    <td>${maiorIdade}</td>
+                    </tr>
+
+                    <tr>
+                        <th>quantidade de mulheres com mais de 30 anos sem
+                            concurso</th>
+
+                            <td>${totalMulheresComMaisDeTrintaSemConcurso}</td>
+
+                            </tr>
+
+                            <tr>
+                                <th>média das alturas dos homens com menos de 40 anos</th>
+                                <td>${media}</td>
+                                </tr>`;
+
+                                document.querySelector("#idade").value = '';
+                                document.querySelector("#sexo").value = 'm';
+                                document.querySelector("#altura").value = '';
+                                document.querySelector("#concursado-sim").checked = true;
+    }
+
+   </script>
+
+</body>
+</html>

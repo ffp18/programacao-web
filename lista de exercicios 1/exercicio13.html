@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+    <h1>exercicio 13</h1>
+
+    <label for="nota1">nota 1</label>
+    <input type="number" id="nota1">
+    <label for="nota2">nota 2</label>
+    <input type="number" id="nota2">
+    <button id="botao">Calcular a Média</button>
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById("botao").addEventListener("click", calcular);
+
+        function calcular() {
+            let nota1 = document.getElementById("nota1").value;
+            let nota2 = document.getElementById("nota2").value;
+            let media = (parseFloat(nota1) + parseFloat(nota2)) /2;
+
+            if (media >= 6) {
+                document.getElementById("resultado").textContent = "Aprovado:" + media;
+            } else {
+                document.getElementById("resultado").textContent = "Reprovado:" + media;
+            }
+
+        }
+    </script>
+</body>
+</html>

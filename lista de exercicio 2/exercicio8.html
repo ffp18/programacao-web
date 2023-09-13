@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+    <!--8. Faça um algoritmo que leia o nome e idade de 5 pessoas,
+         e mostre o nome da pessoa mais velha.  -->
+    <h1>exercicio 8</h1>
+
+     
+     <label for="text">Nome1:</label>
+     <input type="text" id="Nome1">
+     <label for="number">Idade:</label>
+     <input type="number" id="idade1">
+     <br>
+     <br>
+     
+     <label for="text">Nome2:</label>
+     <input type="text" id="Nome2">
+     <label for="number">Idade:</label>
+     <input type="number" id="idade2">
+     <br>
+     <br>
+     
+     <label for="text">Nome3:</label>
+     <input type="text" id="Nome3">
+     <label for="number">Idade:</label>
+     <input type="number" id="idade3">
+     <br>
+     <br>
+     
+     <label for="text">Nome4:</label>
+     <input type="text" id="Nome4">
+     <label for="number">Idade:</label>
+     <input type="number" id="idade4">
+     <br>
+     <br>
+     
+     <label for="text">Nome5:</label>
+     <input type="text" id="Nome5">
+     <label for="number">Idade:</label>
+     <input type="number" id="idade5">
+     <br>
+     <br>
+     <button id="botao">Enter</button>
+     <p id="resultado"></p>
+
+     <script>
+        document.querySelector("#botao").addEventListener("click", calcular);
+        function calcular() {
+         
+            const nomes = [
+            document.querySelector("#Nome1").value,
+            document.querySelector("#Nome2").value,
+            document.querySelector("#Nome3").value,
+            document.querySelector("#Nome4").value,
+            document.querySelector("#Nome5").value,
+            ];
+           
+            const idades = [
+                parseInt(document.querySelector("#idade1").value),
+                parseInt(document.querySelector("#idade2").value),
+                parseInt(document.querySelector("#idade3").value),
+                parseInt(document.querySelector("#idade4").value),
+                parseInt(document.querySelector("#idade5").value),
+            ];
+
+            let maiorIdade = 0;
+            let nome = " ";
+              for (let i = 0; i < idades.length; i++) {
+        if (idades[i] > maiorIdade) {
+            maiorIdade = idades[i];
+            nome = nomes[i];
+        }
+    }
+
+
+    document.querySelector("#resultado").textContent = nome;
+
+            
+
+        }
+     </script>
+</body>
+</html>

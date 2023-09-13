@@ -1,0 +1,53 @@
+form {
+    padding: 20px;
+    background-color: #fdeded;
+    border-radius: 1px;
+    border: 1px solid #fff7f7;
+}
+
+.acoes{
+    text-align: center;
+}
+.campo label{
+    color: rgba(0, 0, 0, 0.99);
+}
+.campo input, select{
+    width: 96%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-right: 5px;
+    border-radius: 3px;
+    border: 1px solid #eddddd;
+    padding-left: 5px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.vertical-row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+fieldset {
+    border: 1px solid rgba(49, 92, 49, 0.97);
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+legend {
+    padding: 0.2em 0.5em;
+    border: 1px solid rgba(49, 92, 49, 0.97);
+    color: rgba(0, 0, 0, 0.99);
+    font-size: 90%;
+    text-align: center;
+}
+
+button {
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #8a8a8a;
+}

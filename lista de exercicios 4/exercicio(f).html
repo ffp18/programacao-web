@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--f) Faça uma função Javascript que receba como argumento um array e devolva o array ordenado 
+sem utilizar a função sort(). -->
+
+<label for="number">digite um numero</label>
+<input type="number" id="numero">
+<button id="botao">resultado</button>
+<p id="resultado"></p>
+
+<script>
+    function gerarNumero(length) {
+      const array=[];
+      for(let i=0; i< length;i++) {
+        array.push(Math.floor(Math.random()*100)+1);
+      }
+      return array;
+    }
+
+    document.querySelector("#botao").addEventListener("click", calcular);
+    function calcular() {
+        let numero = parseInt(document.querySelector("#numero").value);
+        const array = gerarNumero(numero);
+        const array2 = [];
+
+        for(let i = 0; i < array.length;i++) {
+            array2.push(array[i]);
+        }
+
+        let len = array2.length -1;
+        for (let i = 0; i < len; i++) { // Percorre o array2
+                for (let j = 0; j < len - i; j++) { // Percorre o array2 - i
+                    if (array2[j] > array2[j + 1]) { // Se o elemento atual for maior que o próximo
+                        const temp = array2[j]; // Armazena o elemento atual em uma variável temporária
+                        array2[j] = array2[j + 1]; // Troca o elemento atual pelo próximo
+                        array2[j + 1] = temp; // Troca o próximo pelo atual
+                    }
+                }
+            }
+
+            document.querySelector("#resultado").innerHTML = `
+            Array: <br> ${array.join(", ")} <br><br> 
+            Array ordenado: <br> ${array2.join(", ")}`;
+    }
+</script>
+</body>
+</html>

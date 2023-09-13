@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+    <!--Faça uma função Javascript que receba uma string e 
+        retorne TRUE caso a string informada 
+contenha um símbolo @ e pelo menos um símbolo ponto 
+após o @ ou FALSE, caso contrário 
+ -->
+
+    <h1>exercicio C objeto string</h1>
+   
+     <label for="text">digite seu email</label>
+     <input type="text" id="email">
+     <button id="botao">Resultado</button>
+     <p id="resultado"></p>
+
+     <script>
+        document.querySelector("#botao").addEventListener("click", calcular);
+         
+        function calcular () {
+            let email = document.querySelector("#email").value;
+
+            let arroba = email.indexOf ('@');
+            let ponto = email.indexOf ('.');
+            
+            if ( arroba >=0 && ponto >arroba) {
+
+                document.querySelector("#resultado").textContent = "true";
+            } else {
+                document.querySelector("#resultado").textContent = "false";
+            }
+         }
+            
+     </script>
+</body>
+</html>

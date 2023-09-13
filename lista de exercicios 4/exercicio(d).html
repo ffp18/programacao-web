@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--d) Faça uma função em Javascript que receba como argumento um array e calcule a média dos 
+elementos do array.
+-->
+
+<label for="number">digite um numero</label>
+<input type="number" id="numero">
+<button id="botao">resultado</button>
+<p id="resultado"></p>
+
+<script>
+    function gerrarNumero(length) {
+        const array = [];
+        for(let i = 0; i < length; i++) {
+            array.push(Math.floor(Math.random()*100)+1);
+        }
+        return array;
+    }
+    document.querySelector("#botao").addEventListener("click", calcular);
+    function calcular() {
+        let numero = parseInt(document.querySelector("#numero").value);
+        const array = gerrarNumero(numero);
+        document.querySelector("#resultado").innerHTML = `Array: <br> ${array.join(",")} <br><br>
+        Media: <br> ${(array.reduce((a, b) => a + b) / array.length).toFixed(1)}`;
+    }
+</script>
+</body>
+</html>

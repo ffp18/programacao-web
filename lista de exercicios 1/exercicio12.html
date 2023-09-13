@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+    <h1>exercicio 12</h1>
+      
+   <input type="number" id="maça">
+   <button id="botao">calcular Custo</button>
+   <p id="resultado"></p>
+
+   <script>
+    document.getElementById("botao").addEventListener("click", calcular);
+   
+
+    function calcular() {
+        let numMaça = document.getElementById("maça").value;
+        let custototal;
+        if (numMaça < 12) {
+            custototal  = numMaça * 1.30;
+        } else {
+            custototal = numMaça * 1.00;
+        }
+        document.getElementById("resultado").textContent = " o custo total é:" + custototal;
+    }
+     
+    
+   </script>
+
+</body>
+</html>

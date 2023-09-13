@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+    <h1>exercicio 5</h1>
+
+    <label for="number">nota1</label>
+    <br><br>
+    <input type="number" id="nota1">
+    <br><br>
+    <label for="number">nota2</label>
+    <br><br>
+    <input type="number" id="nota2">
+    <br><br>
+    <label for="number">nota3</label>
+    <br><br>
+    <input type="number" id="nota3">
+    <br><br>
+    <label for="number">nota4</label>
+    <br><br>
+    <input type="number" id="nota4">
+    <br/><br/>
+    <button id="botao">Resultado</button>
+    <p id="resultado"></p>
+
+    <script>
+     document.querySelector("#botao").addEventListener("click",calcular);
+     
+
+     function calcular() {
+        let nota1 =  parseFloat(document.querySelector("#nota1").value);
+        let nota2 = parseFloat(document.querySelector("#nota2").value);
+        let nota3 = parseFloat(document.querySelector("#nota3").value);
+        let nota4 = parseFloat(document.querySelector("#nota4").value);
+
+        let menorNota = Math.min(nota1,nota2,nota3,nota4);
+         // math.min retorna o menor de zero ou mais numeros fornecidos como argumento.
+        document.querySelector("#resultado").textContent =  'A media é:' + (nota1+nota2+nota3+nota4-menorNota)/3;
+     }
+     
+    </script>
+</body>
+</html>

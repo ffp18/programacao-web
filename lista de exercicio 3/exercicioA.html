@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--) Faça uma função Javascript que receba uma string e 
+        retorne a string inversa.
+ -->
+    <h1> exercicio A objeto string</h1>
+
+     <label for="text">digite algo:</label>
+     <input type="text" id="texto">
+     <button id="botao">Inverta</button>
+     <p id="resultado"></p>
+
+     <script>
+        document.querySelector("#botao").addEventListener("click", inverterString);
+          
+         
+        function inverterString() {
+
+            let texto = document.querySelector("#texto").value;
+            let resultado = texto. split("").reverse().join("");
+            document.querySelector("#resultado").textContent = resultado;
+       //O método split é usado para dividir a string em um array de caracteres
+       // O método reverse é usado para invertir o array resultante do método split.
+       // E o método join é usado para juntar os elementos do array invertido em uma única string.
+        }
+     </script>
+
+
+
+</body>
+</html>

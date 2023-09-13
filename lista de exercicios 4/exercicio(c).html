@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- c) Faça uma função em Javascript que receba como argumento um array, procure o maior valor e 
+devolva a sua posição no array (índice entre 0 e Dimensão do Array-1)-->
+
+     <label for="numero">digite um número:</label>
+     <input type="number" id="numero">
+     <button id="botao">resultado</button>
+     <p id="resultado"></p>
+
+   <script>
+    function geraerNumero(length) {
+        const array = [];
+        for (let i = 0; i < length; i++) {
+            array.push(Math.floor(Math.random()*100)+1);
+        }
+        return array ;
+    }
+
+    document.querySelector("#botao").addEventListener("click", calcular);
+    function calcular() {
+        let numero = parseInt(document.querySelector("#numero").value);
+        const array= geraerNumero(numero);
+
+        document.querySelector("#resultado").innerHTML = ` array: <br> ${array.join(",")} <br><br> 
+        Maior valor: <br> ${Math.max(...array)} <br><br> Posição:<br> ${array.indexOf(Math.max(...array))} `;
+
+    }
+
+   </script>

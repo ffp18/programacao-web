@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+    <h1>exercicio 2</h1>
+
+<label for="number">Pares</label>
+<input type="number" id="numerospares">
+<button id="botao">resultado</button>
+<p id="resultado"></p>
+
+<script>
+    document.getElementById("botao").addEventListener("click", calcular);
+
+    function calcular() {
+        let numerospares = parseInt(document.getElementById("numerospares").value);
+        let resultado = " ";
+        for (let i=0; i<=numerospares;i+=2) {
+           resultado += i + " ";
+        }
+
+        document.getElementById("resultado").textContent = resultado;
+    }
+</script>
+</body>
+</html>

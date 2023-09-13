@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+
+</head>
+
+<body>
+
+    <h1>exercicio 20</h1>
+
+    <label for="number">Estoque atual</label>
+    <input type="number" id="estoque">
+    <br>
+    <label for="number">Estoque máximo</label>
+    <input type="number" id="estoqueMa">
+    <br>
+    <label for="number">Estoque mínimo</label>
+    <input type="number" id="estoqueMi">
+    <br>
+    <button id="botao">Calcular saldo</button>
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById("botao").addEventListener("click", calcular);
+
+        function calcular() { 
+
+            let estoque = Number(document.getElementById("estoque").value);
+            let estoqueMa = Number(document.getElementById("estoqueMa").value);
+            let estoqueMi = Number(document.getElementById("estoqueMi").value);
+
+            let media = (estoqueMa + estoqueMi) / 2;
+
+
+            if (estoque >= media) {
+                document.getElementById("resultado").textContent = "Não pode comprar.";
+            } else {
+                document.getElementById("resultado").textContent = "Pode comprar.";
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+</head>
+<body>
+
+    <h1>exercicio 4</h1>
+   
+    <label for="eleitor">Número de Eleitores</label>
+    <input type="number" id="eleitor">
+    <label for="branco">Branco</label>
+    <input type="number" id="branco">
+    <label for="nulo">Nulo</label>
+    <input type="number" id="nulo">
+    <label for="valido">Valido</label>
+    <input type="number" id="valido">
+
+    <button id="botao">resultado</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById("botao").addEventListener("click", calculo);
+
+        function calculo() {
+            var eleitores = document.getElementById("eleitor").value;
+            var branco = document.getElementById("branco").value;
+            var nulo = document.getElementById("nulo").value;
+            var valido = document.getElementById("valido").value;
+
+            branco = (branco / eleitores) * 100;
+            nulo = (nulo / eleitores) * 100;
+            valido = (valido / eleitores) * 100;
+
+            document.getElementById("resultado").textContent = `Branco: ${branco}%  |  Nulo: ${nulo}%  |  Valido: ${valido}%`;
+
+
+        }
+    </script>
+</body>
+</html>

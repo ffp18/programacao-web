@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercicio</title>
+    
+</head>
+<body>
+    <h1>exercicio 6</h1>
+    
+
+    <label for="valor"> Preço </label>
+    <input type="number" id="valor">
+    <button id="botao"> Calcular preço </button>
+    <p id="resultado"></p>
+
+    <script>
+        document.getElementById("botao").addEventListener("click", calcular);
+
+        function calcular() {
+            let valor = document.getElementById("valor").value;
+            valor = (valor * 0.28 * 0.45) + valor * 1;
+
+            document.getElementById("resultado").textContent = valor;
+        }
+    </script>
+
+</body>
+</html>
