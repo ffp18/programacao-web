@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REGEX</title>
+</head>
+<body>
+	login:
+	<input type="text" id="login">
+    <button id="validar-login">Validar</button>
+	<br>
+    <br>
+	nome:
+	<input type="text" id="nome">
+    <button id="validar-nome">Validar</button>
+	<br>
+    <br>
+	email:
+	<input type="text" id="email">
+    <button id="validar-email">Validar</button>
+	<br>
+    <br>
+	telefone:
+	<input type="text" id="telefone">
+    <button id="validar-telefone">Validar</button>
+	<br>
+    <br>
+	data:
+	<input type="text" id="data">
+    <button id="validar-data">Validar</button>
+	<br>
+    <br>
+
+    <script>
+        document.querySelector('#validar-login').addEventListener('click', (evento) => {
+            let texto = document.querySelector("#login").value;
+            //permitir apenas letras minúsculas, números e o caractere "_" (underscore).
+            //deve ter de 5 a 10 caracteres.
+            let regexLogin = /^[a-z0-9_]{5,10}$/; //alterar esta linha
+            if (regexLogin.test(texto)) {
+                alert("Válido");
+            } else {
+                alert("Inválido");
+            }
+        });
+
+        document.querySelector('#validar-nome').addEventListener('click', (evento) => {
+            let texto = document.querySelector("#nome").value;
+    		//permite apenas letras e apenas a primeira letra deve ser maiúscula
+	    	//deve ter no mínimo 2 caracteres
+            let regexLogin = /^[A-Z][a-z]*$/; //alterar esta linha
+            if (regexLogin.test(texto)) {
+                alert("Válido");
+            } else {
+                alert("Inválido");
+            }
+        });  
+
+        document.querySelector('#validar-email').addEventListener('click', (evento) => {
+            let texto = document.querySelector("#email").value;
+		    //permitir letras minúsculas, números, underscore "_" e ponto final ".";
+		    //deve conter uma e apenas uma arroba "@" que não esteja nem no início nem no fim da string
+	    	//deve ter no mínimo 3 caracteres
+            let regexLogin = /^[a-z0-9._]+@[a-z0-9]+\.[a-z]{2,}$/; //alterar esta linha
+            if (regexLogin.test(texto)) {
+                alert("Válido");
+            } else {
+                alert("Inválido");
+            }
+        }); 
+        
+        document.querySelector('#validar-telefone').addEventListener('click', (evento) => {
+            let texto = document.querySelector("#telefone").value;
+		    //permite apenas números 
+		    //o sexto caracter deve ser o caracter "-"
+		    //deve ter exatamente 10 caracteres
+	    	//exemplo: 99999-9999
+            let regexLogin = /^\d{5}-\d{4}$/; //alterar esta linha
+            if (regexLogin.test(texto)) {
+                alert("Válido");
+            } else {
+                alert("Inválido");
+            }
+        });   
+        
+        document.querySelector('#validar-data').addEventListener('click', (evento) => {
+            let texto = document.querySelector("#data").value;
+		    //deve ter dois números, o caractere "/" , mais dois números , o caractere "/" novamente , e mais quatro números
+	    	//exemplo: 99/99/9999
+            let regexLogin = /^\d{2}\/\d{2}\/\d{4}$/; //alterar esta linha
+            if (regexLogin.test(texto)) {
+                alert("Válido");
+            } else {
+                alert("Inválido");
+            }
+        });           
+    </script>
+</body>
+</html>

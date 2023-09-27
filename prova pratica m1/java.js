@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
+
+    //codigo do prof
+  
+
     document.querySelector("#formulario").addEventListener('submit', adicionar);
 
     function mostrarErro(elemento, mensagem) {
@@ -8,9 +12,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function limparErros() {
-        const elementos = ['#nome','#sobrenome','#email','#website','#dataInicial','#dataFim','input[name="regiao"]','input[name="atividade"]'];
+        const elementos = ['#nome', '#sobrenome', '#email', '#website', '#dataInicial', '#dataFim', 'input[name="regiao"]', 'input[name="atividade"]'];
         elementos.forEach(elemento => {
-            mostrarErro(elemento,'');
+            mostrarErro(elemento, '');
             document.querySelector(elemento).style.borderColor = ""; // Remove a borda vermelha quando os erros são limpos
         });
     }
@@ -30,19 +34,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //validações do formulário
         if (nome === '') {
-            mostrarErro('#nome','Nome é obrigatório!');
+            mostrarErro('#nome', 'Nome é obrigatório!');
             possuiErros = true; // Se houver um erro, define possuiErros como true
         } else if (nome.length < 3) {
-            mostrarErro('#nome',"O Nome deve ter pelo menos três caracteres!");
+            mostrarErro('#nome', "O Nome deve ter pelo menos três caracteres!");
             possuiErros = true; // Se houver um erro, define possuiErros como true
         }
 
         //validacao sobrenome
-        if(!sobrenome) {
-            mostrarErro('#sobrenome','Sobrenome é Obrigatorio!')
+        if (!sobrenome) {
+            mostrarErro('#sobrenome', 'Sobrenome é Obrigatorio!')
             possuiErros = true; // Se houver um erro, define possuiErros como true
         }
-        
+
         // validação de e-mail
         if (!email) {
             mostrarErro('#email', 'E-Mail é Obrigatorio');
@@ -59,55 +63,89 @@ document.addEventListener('DOMContentLoaded', function () {
         //validação da webiste
         if (!website) {
             mostrarErro('#website', "Website é Obrigatório");
-            possuiErros= true; // Se houver um erro, define possuiErros como true
+            possuiErros = true; // Se houver um erro, define possuiErros como true
         } else {
             if (!website.startsWith("http://") && !website.startsWith("https://")) {
                 mostrarErro('#website', "Website deve começar com http:// ou https://");
-                possuiErros= true; // Se houver um erro, define possuiErros como true
+                possuiErros = true; // Se houver um erro, define possuiErros como true
             }
         }
 
         // validação datainicial
-       if(!dataInicial || !dataFim) {
-           if(!dataInicial) {
+        if (!dataInicial || !dataFim) {
+            if (!dataInicial) {
                 mostrarErro('#dataInicial', 'A data inicial é obrigatório');
-           } 
-           if(!dataFim) {
+            }
+            if (!dataFim) {
                 mostrarErro('#dataFim', 'Data final é obrigatória');
-           }
-           possuiErros= true; // Se houver um erro, define possuiErros como true
-       }
+            }
+            possuiErros = true; // Se houver um erro, define possuiErros como true
+        }
 
-       const dataInicialDate = new Date(dataInicial);
-       const dataFimDate = new Date(dataFim);
-       const hoje = new Date();
-       hoje.setHours(0, 0, 0, 0); // Isso define a hora para meia-noite, para comparar apenas as datas
+        const dataInicialDate = new Date(dataInicial);
+        const dataFimDate = new Date(dataFim);
+        const hoje = new Date();
+        hoje.setHours(0, 0, 0, 0); // Isso define a hora para meia-noite, para comparar apenas as datas
 
-       if (dataInicialDate < hoje) {
-           mostrarErro("#dataInicial", "A Data Inicial não pode ser menor que a data atual!");
-           possuiErros= true; // Se houver um erro, define possuiErros como true
-       }
+        if (dataInicialDate < hoje) {
+            mostrarErro("#dataInicial", "A Data Inicial não pode ser menor que a data atual!");
+            possuiErros = true; // Se houver um erro, define possuiErros como true
+        }
 
-       if (dataFimDate <= dataInicialDate) {
-           mostrarErro("#dataFim", "A Data Final não pode ser menor ou igual à Data Inicial!");
-           possuiErros= true; // Se houver um erro, define possuiErros como true
-       }
+        if (dataFimDate <= dataInicialDate) {
+            mostrarErro("#dataFim", "A Data Final não pode ser menor ou igual à Data Inicial!");
+            possuiErros = true; // Se houver um erro, define possuiErros como true
+        }
 
-       if (atividade.length < 1 || atividade.length > 3) {
-           mostrarErro('input[name="atividade"]','Você deve selecionar no mínimo uma e no máximo três atividades!');
-           possuiErros= true; // Se houver um erro, define possuiErros como true
-       }
+        if (atividade.length < 1 || atividade.length > 3) {
+            mostrarErro('input[name="atividade"]', 'Você deve selecionar no mínimo uma e no máximo três atividades!');
+            possuiErros = true; // Se houver um erro, define possuiErros como true
+        }
 
-       if (possuiErros) {
-           event.preventDefault();
-           event.stopPropagation();
-           return false;
-       }
+        if (possuiErros) {
+            event.preventDefault();
+            event.stopPropagation();
+            return false;
+        }
+
+        //verificar se esta editando 
+        
+
+        const prestadorServico = {
+            nome: document.querySelector('#nome').value,
+            sobrenome: document.querySelector('#sobrenome').value,
+            email: document.querySelector('#email').value,
+            site: document.querySelector('#website').value,
+            dataInicial: document.querySelector('#dataini').value,
+            dataFinal: document.querySelector('#datafim').value,
+            regiao: document.querySelector('input[name=regiao]:checked').value,
+            atividadesPretendidas: Array.from(document.querySelectorAll('input[name=atividade]:checked')).map(a => a.value)
+        };
+
+
+
+        //passo 2 - obter o array de prestadores de servico do localstorage
+        const prestadoresDeServico = JSON
+            .parse(localStorage.getItem('prestadoresDeServico')) ?? []
+
+        //passo 3 - adicionar o objeto json ao array
+        prestadoresDeServico.push(prestadorServico);
+
+        //passo 4 - salvar o array no localstorage
+        localStorage
+            .setItem(
+                'prestadoresDeServico',
+                JSON.stringify(prestadoresDeServico)
+            );
+
+        montarTabelaPrestadores();
+
     }
 
+
     //validação região
-    document.querySelectorAll('input[name="regiao"]').forEach(function(radio) {
-        radio.addEventListener('change', function() {
+    document.querySelectorAll('input[name="regiao"]').forEach(function (radio) {
+        radio.addEventListener('change', function () {
             let regiao = this.value;
             const programadorOption = document.querySelector('#programador');
             const dbaOption = document.querySelector('#dba');
@@ -121,4 +159,5 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
+    
 });
