@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
 
     //codigo do prof
-  
+
+    montarTabelaPrestadores();
 
     document.querySelector("#formulario").addEventListener('submit', adicionar);
 
@@ -61,10 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         //validação da webiste
-        if (!website) {
-            mostrarErro('#website', "Website é Obrigatório");
-            possuiErros = true; // Se houver um erro, define possuiErros como true
-        } else {
+        if (website) {
             if (!website.startsWith("http://") && !website.startsWith("https://")) {
                 mostrarErro('#website', "Website deve começar com http:// ou https://");
                 possuiErros = true; // Se houver um erro, define possuiErros como true
@@ -108,9 +106,6 @@ document.addEventListener('DOMContentLoaded', function () {
             return false;
         }
 
-        //verificar se esta editando 
-        
-
         const prestadorServico = {
             nome: document.querySelector('#nome').value,
             sobrenome: document.querySelector('#sobrenome').value,
@@ -122,16 +117,11 @@ document.addEventListener('DOMContentLoaded', function () {
             atividadesPretendidas: Array.from(document.querySelectorAll('input[name=atividade]:checked')).map(a => a.value)
         };
 
-
-
-        //passo 2 - obter o array de prestadores de servico do localstorage
         const prestadoresDeServico = JSON
             .parse(localStorage.getItem('prestadoresDeServico')) ?? []
 
-        //passo 3 - adicionar o objeto json ao array
         prestadoresDeServico.push(prestadorServico);
 
-        //passo 4 - salvar o array no localstorage
         localStorage
             .setItem(
                 'prestadoresDeServico',
@@ -139,9 +129,7 @@ document.addEventListener('DOMContentLoaded', function () {
             );
 
         montarTabelaPrestadores();
-
     }
-
 
     //validação região
     document.querySelectorAll('input[name="regiao"]').forEach(function (radio) {
@@ -159,5 +147,36 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     });
-    
+
+    function montarTabelaPrestadores() {
+        const prestadoresDeServico = JSON
+            .parse(localStorage.getItem('prestadoresDeServico')) ?? []
+
+
+        const tabela = document.querySelector('#tabela-prestadores tbody');
+        tabela.innerHTML = '';
+
+        let conteudo = '';
+
+        prestadoresDeServico.forEach((prestador, indice) => {
+            conteudo += `
+                    <tr>
+                        <td>${prestador.nome}</td>	
+                        <td>${prestador.sobrenome}</td>
+                        <td>${prestador.email}</td>
+                        <td>${prestador.site}</td>
+                        <td>${prestador.dataInicial}</td>
+                        <td>${prestador.dataFinal}</td>
+                        <td>${prestador.regiao}</td>
+                        <td>${prestador.atividadesPretendidas.join('-')}</td>
+                        <td>
+                            <button class='exclusao' data-id='${indice}'>Excluir</button>
+                            <button class='edicao' data-id='${indice}'>Editar</button>
+                        </td>
+                    </tr>
+            `;
+        });
+        tabela.innerHTML = conteudo;
+    }
+
 });
