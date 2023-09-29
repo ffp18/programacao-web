@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-    //codigo do prof
+    let editando = false;
+
+    let id_editando = 0;
 
     montarTabelaPrestadores();
 
@@ -103,32 +105,55 @@ document.addEventListener('DOMContentLoaded', function () {
         if (possuiErros) {
             event.preventDefault();
             event.stopPropagation();
-            return false;
         }
+        // Verificar se está editando ou criando
+        if (editando) {
+            const prestadoresDeServico = JSON
+                .parse(localStorage.getItem('prestadoresDeServico')) ?? []
 
-        const prestadorServico = {
-            nome: document.querySelector('#nome').value,
-            sobrenome: document.querySelector('#sobrenome').value,
-            email: document.querySelector('#email').value,
-            site: document.querySelector('#website').value,
-            dataInicial: document.querySelector('#dataini').value,
-            dataFinal: document.querySelector('#datafim').value,
-            regiao: document.querySelector('input[name=regiao]:checked').value,
-            atividadesPretendidas: Array.from(document.querySelectorAll('input[name=atividade]:checked')).map(a => a.value)
-        };
+            prestadoresDeServico[id_editando] = {
+                nome: document.querySelector('#nome').value,
+                sobrenome: document.querySelector('#sobrenome').value,
+                email: document.querySelector('#email').value,
+                site: document.querySelector('#website').value,
+                dataInicial: document.querySelector('#dataInicial').value,
+                dataFinal: document.querySelector('#dataFim').value,
+                regiao: document.querySelector('input[name=regiao]:checked').value,
+                atividadesPretendidas: Array.from(document.querySelectorAll('input[name=atividade]:checked')).map(a => a.value)
+            };
 
-        const prestadoresDeServico = JSON
-            .parse(localStorage.getItem('prestadoresDeServico')) ?? []
+            localStorage
+                .setItem(
+                    'prestadoresDeServico',
+                    JSON.stringify(prestadoresDeServico)
+                );
 
-        prestadoresDeServico.push(prestadorServico);
+            editando = false;
+        } else {
+            const prestadorServico = {
+                nome: document.querySelector('#nome').value,
+                sobrenome: document.querySelector('#sobrenome').value,
+                email: document.querySelector('#email').value,
+                site: document.querySelector('#website').value,
+                dataInicial: document.querySelector('#dataInicial').value,
+                dataFinal: document.querySelector('#dataFim').value,
+                regiao: document.querySelector('input[name=regiao]:checked').value,
+                atividadesPretendidas: Array.from(document.querySelectorAll('input[name=atividade]:checked')).map(a => a.value)
+            };
 
-        localStorage
-            .setItem(
-                'prestadoresDeServico',
-                JSON.stringify(prestadoresDeServico)
-            );
+            const prestadoresDeServico = JSON
+                .parse(localStorage.getItem('prestadoresDeServico')) ?? []
 
-        montarTabelaPrestadores();
+            prestadoresDeServico.push(prestadorServico);
+
+            localStorage
+                .setItem(
+                    'prestadoresDeServico',
+                    JSON.stringify(prestadoresDeServico)
+                );
+
+            montarTabelaPrestadores();
+        }
     }
 
     //validação região
@@ -178,5 +203,63 @@ document.addEventListener('DOMContentLoaded', function () {
         });
         tabela.innerHTML = conteudo;
     }
+    //excluir prestador
+    const tabela = document.querySelector('#tabela-prestadores tbody');
+    tabela.addEventListener('click', function (event) {
+        if (event.target.className == 'exclusao') {
+            let id = event.target.getAttribute('data-id');
+            excluirPrestador(id);
+        }
+    });
+    function excluirPrestador(id) {
+
+        const prestadoresDeServico = JSON
+            .parse(localStorage.getItem('prestadoresDeServico')) ?? []
+
+        prestadoresDeServico.splice(id, 1);
+
+        localStorage
+            .setItem(
+                'prestadoresDeServico',
+                JSON.stringify(prestadoresDeServico)
+            );
+
+        montarTabelaPrestadores();
+    }
+    //editar prestador
+    tabela.addEventListener('click', function (event) {
+        if (event.target.className == 'edicao') {
+            let id = event.target.getAttribute('data-id');
+            editarPrestador(id);
+        }
+    });
+
+    function editarPrestador(id) {
+
+        const prestadoresDeServico = JSON
+            .parse(localStorage.getItem('prestadoresDeServico')) ?? []
+
+        const prestador = prestadoresDeServico[id]
+
+        document.querySelector('#nome').value = prestador.nome;
+        document.querySelector('#sobrenome').value = prestador.sobrenome;
+        document.querySelector('#email').value = prestador.email;
+        document.querySelector('#website').value = prestador.site;
+        document.querySelector('#dataInicial').value = prestador.dataInicial;
+        document.querySelector('#dataFim').value = prestador.dataFinal;
+        document.querySelector(`input[value="${prestador.regiao}"]`).checked = true;
+        document.querySelectorAll('input[name="atividade"]').forEach(atividade => {
+            atividade.checked = false;
+        });
+        prestador.atividadesPretendidas.forEach(atividade => {
+            document.querySelector(`input[value="${atividade}"]`).checked = true;
+        });
+
+        editando = true;
+        id_editando = id;
+    }
+
+
+
 
 });
