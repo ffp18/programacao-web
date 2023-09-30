@@ -1,8 +1,8 @@
 form {
     padding: 20px;
-    background-color: #fdeded;
+    background-color: #1191e7;
     border-radius: 1px;
-    border: 1px solid #fff7f7;
+    border: 1px solid #0c0b0b;
 }
 
 .acoes{
@@ -51,3 +51,55 @@ button {
     margin-right: 10px;
     border: 1px solid #8a8a8a;
 }
+
+h2 {
+    color:#0f0909 ;
+    text-shadow: -1px -1px black;
+    font-family:'Roboto', sans-serif;
+    text-align: center;
+
+}
+
+/* Estilo para o cabeçalho da tabela */
+#tabela-prestadores th {
+    background-color: #1191e7;
+    border: 1px solid #100f0f;
+    padding: 10px;
+    
+  }
+  
+  /* Estilo para as células da tabela */
+  #tabela-prestadores td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    
+  }
+  
+  /* Estilo para linhas de fundo alternadas */
+  #tabela-prestadores tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  body {
+    background-color:#36c6d3;
+  
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+    margin: 20px;
+  }
+  
+  #tabela-prestadores {
+    margin-top: 20px;
+    margin-bottom: auto; 
+    align-self: center; 
+  }
+  
+  #outra-tabela {
+    margin-top: auto;
+    align-self: center; 
+  }
